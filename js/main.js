@@ -1,6 +1,14 @@
-const { useState } = React;
+const { useState, useEffect } = React;
 
 import productos from "./productos.js";
+
+const getUrlParams = () => {
+  let params = {};
+  window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m, key, value) => {
+    params[key] = value;
+  });
+  return params;
+};
 
 const Producto = ({ producto }) => {
   return (
@@ -31,19 +39,33 @@ const Producto = ({ producto }) => {
 };
 
 const App = () => {
-  const [count, setCount] = useState(0);
-  const increase = () => {
-    setCount(count + 1);
-  };
-  const decrease = () => {
-    setCount(count - 1);
+  const [ filter, setFilter ] = useState('');
+  const [ filteredRefs, setFilteredRefs ] = useState([]);
+
+  useEffect(() => {
+    const params = getUrlParams();
+    const filter = params['ids'] || '';
+    const filteredRefs = [ ... new Set(filter.split(',').map(ref => ref.trim()).filter(ref => ref != '')) ];
+    setFilter(filteredRefs.join(', '));
+    setFilteredRefs(filteredRefs);
+  }, []);
+
+  const handleFilterChange = (e) => {
+    const filter = e.target.value;
+    setFilter(filter);
+    setFilteredRefs(filter.split(',').map(ref => ref.trim()).filter(ref => ref != ''));
   };
 
   return (
     <div>
-      {
-        productos.map(producto => <Producto producto={producto}></Producto>)
-      }
+      <div>
+        Filtro: <input type="text" value={filter} onChange={handleFilterChange} />
+      </div>
+      <div>
+        {
+          productos.filter(producto => filteredRefs.length === 0 || filteredRefs.includes(producto.referencia)).map(producto => <Producto producto={producto}></Producto>)
+        }
+      </div>
     </div>
   );
 };
