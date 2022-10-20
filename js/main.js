@@ -17,13 +17,13 @@ const getUrlParams = () => {
 const Producto = ({ product }) => {
   return (
     <a href={product.link} className="product" target="_blank">
-      <div className={`store ${product.store}`} style={{ backgroundColor: colors[product.store]}}>{product.store}</div>
+      <div className={`store ${product.store}`} style={{ backgroundColor: colors[product.store] || '#888'}}>{product.store}</div>
       <div style={{ padding: '6px 6px 0' }}>
         <div className="description">{product.description}</div>
         <div style={{ textAlign: 'right' }}>
           <table style={{ display: 'inline-block' }}>
             <tr>
-              <td><span>Ref.: {product.ref}</span></td>
+              <td><span>Ref.: {product.id}</span></td>
             </tr>
           </table>
         </div>
@@ -43,7 +43,7 @@ const App = () => {
   useEffect(() => {
     const params = getUrlParams();
     const filter = params['ids'] || '';
-    const filteredRefs = [ ... new Set(filter.split(',').map(ref => ref.trim()).filter(ref => ref != '')) ];
+    const filteredRefs = [ ... new Set(filter.split(',').map(id => id.trim()).filter(id => id != '')) ];
     setFilter(filteredRefs.join(', '));
     setFilteredRefs(filteredRefs);
   }, []);
@@ -51,7 +51,7 @@ const App = () => {
   const handleFilterChange = (e) => {
     const filter = e.target.value;
     setFilter(filter);
-    setFilteredRefs(filter.split(',').map(ref => ref.trim()).filter(ref => ref != ''));
+    setFilteredRefs(filter.split(',').map(id => id.trim()).filter(id => id != ''));
   };
 
   return (
@@ -59,9 +59,9 @@ const App = () => {
       <div>
         Filtro: <input type="text" value={filter} onChange={handleFilterChange} />
       </div>
-      <div style={{marginTop: '10px'}}>
+      <div className="products" style={{marginTop: '10px'}}>
         {
-          products.filter(product => filteredRefs.length === 0 || filteredRefs.includes(product.ref)).map(product => <Producto product={product}></Producto>)
+          products.filter(product => filteredRefs.length === 0 || filteredRefs.includes(product.id)).map(product => <Producto product={product}></Producto>)
         }
       </div>
     </div>
