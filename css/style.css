@@ -1,40 +1,31 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
-.producto {
+.product {
   display: inline-block;
   width: 200px;
   border: dashed 1px #0099FF;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   margin: 3px;
+  text-decoration: none;
+  color: #206bdb !important;
 }
-.producto .genero {
+.product .store {
   padding: 8px;
   text-align: center;
   text-transform: uppercase;
   font-family: Verdana, Geneva, sans-serif;
   font-size: 20px;
   color: #fff;
-  background-color: #1485ff;
 }
-.producto .genero.Mujer { background-color: #ff0066 !important; }
-.producto .descripcion {
+.product .description {
   min-height: 32px;
 }
-.producto .marca_valor { font-weight: bold; text-transform: uppercase; }
-.producto .url {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background-image: url("../imgs/sprites.png");
-  background-position: -1px -1px;
-  outline: none;
-}
-.producto img.vistaprevia {
+.product img.preview {
   max-width: 100%;
 }
-.producto .precio {
+.product .price {
   position: absolute;
   bottom: 4px;
   right: 4px;

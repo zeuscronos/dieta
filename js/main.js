@@ -1,6 +1,10 @@
 const { useState, useEffect } = React;
 
-import productos from "./productos.js";
+import products from "./products.js";
+
+const colors = {
+  'Mercadona': '#1485ff',
+};
 
 const getUrlParams = () => {
   let params = {};
@@ -10,31 +14,25 @@ const getUrlParams = () => {
   return params;
 };
 
-const Producto = ({ producto }) => {
+const Producto = ({ product }) => {
   return (
-    <div className="producto">
-      <div className={`genero ${producto.genero}`}>{producto.genero}</div>
+    <a href={product.link} className="product" target="_blank">
+      <div className={`store ${product.store}`} style={{ backgroundColor: colors[product.store]}}>{product.store}</div>
       <div style={{ padding: '6px 6px 0' }}>
-        <div className="descripcion">{producto.descripcion}</div>
-        <div style={{ textAlign: 'right', marginTop: '6px' }}>
-          <span>Marca: </span><span className="marca_valor">{producto.marca}</span>
-        </div>
+        <div className="description">{product.description}</div>
         <div style={{ textAlign: 'right' }}>
           <table style={{ display: 'inline-block' }}>
             <tr>
-              <td><span>Ref.: {producto.referencia}</span></td>
-              <td>
-                <a className="url" target="_blank" href={producto.url} ></a>
-              </td>
+              <td><span>Ref.: {product.ref}</span></td>
             </tr>
           </table>
         </div>
       </div>
       <div style={{ position: 'relative' }}>
-        <img className="vistaprevia" src={`photos/img_${producto.referencia}.jpg`} />
-        <span className="precio">{sprintf('%0.2f', producto.precio)} €</span>
+        <img className="preview" src={product.image} />
+        <span className="price">{sprintf('%0.2f', product.price)} €</span>
       </div>
-    </div>
+    </a>
   );
 };
 
@@ -61,9 +59,9 @@ const App = () => {
       <div>
         Filtro: <input type="text" value={filter} onChange={handleFilterChange} />
       </div>
-      <div>
+      <div style={{marginTop: '10px'}}>
         {
-          productos.filter(producto => filteredRefs.length === 0 || filteredRefs.includes(producto.referencia)).map(producto => <Producto producto={producto}></Producto>)
+          products.filter(product => filteredRefs.length === 0 || filteredRefs.includes(product.ref)).map(product => <Producto product={product}></Producto>)
         }
       </div>
     </div>
