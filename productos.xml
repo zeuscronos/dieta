@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="productos.xsl" ?>
+<productos>
+    <producto referencia="A13725478">
+        <descripcion>Camisa de manga corta, de cuadros color naranja.</descripcion>
+        <url>http://www.elcorteingles.es/moda/A13725478-camisa-de-hombre-de-cuadros</url>
+        <genero>Hombre</genero>
+        <categoria>Camisas</categoria>
+        <marca>Pertegaz</marca>
+        <precio>65.00</precio>
+    </producto>
+    <producto referencia="A14815772">
+        <descripcion>Vestido corto con estampado multicolor.</descripcion>
+        <url>http://www.elcorteingles.es/moda/A14815772-vestido</url>
+        <genero>Mujer</genero>
+        <categoria>Vestidos</categoria>
+        <marca>Fórmula Joven</marca>
+        <precio>39.95</precio>
+    </producto>
+    <producto referencia="A13490757">
+        <descripcion>Pantalón tipo chino en color beige.</descripcion>
+        <url>http://www.elcorteingles.es/moda/A13490757-pantalon-de-hombre</url>
+        <genero>Hombre</genero>
+        <categoria>Pantalones</categoria>
+        <marca>Dockers</marca>
+        <precio>96.00</precio>
+    </producto>
+    <producto referencia="A12774586">
+        <descripcion>Leggin básico en color kaki.</descripcion>
+        <url>http://www.elcorteingles.es/moda/A12774586-leggin-de-mujer</url>
+        <genero>Mujer</genero>
+        <categoria>Pantalones</categoria>
+        <marca>Easy Wear</marca>
+        <precio>7.95</precio>
+    </producto>
+    <producto referencia="A14536494">
+        <descripcion>Zapatillas elaboradas en tejido con base de algodón.</descripcion>
+        <url>http://www.elcorteingles.es/moda/A14536494-zapatillas-de-lona-de-hombre</url>
+        <genero>Hombre</genero>
+        <categoria>Zapatos</categoria>
+        <marca>Camper</marca>
+        <precio>80.00</precio>
+    </producto>
+    <producto referencia="A13380785">
+        <descripcion>Sandalias de tacón elaboradas en piel en color beige.</descripcion>
+        <url>http://www.elcorteingles.es/moda/A13380785-sandalias-de-mujer</url>
+        <genero>Mujer</genero>
+        <categoria>Zapatos</categoria>
+        <marca>Hugo Boss</marca>
+        <precio>399.00</precio>
+    </producto>
+</productos>
